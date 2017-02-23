@@ -1,0 +1,19 @@
+{
+	"Connector":{
+		"port": "8080",
+		"docRoot": "webapp"
+	},
+	"Host":[{
+		"domain" : "main.ztom.com",
+		"docRoot":"webapp",
+		"errorPage_403": "webapp/error/service/403.html",
+		"errorPage_404": "webapp/error/service/404.html",
+		"errorPage_500": "webapp/error/service/500.html"
+	},{
+		"domain" : "default",
+		"docRoot":"webapp",
+		"errorPage_403": "webapp/error/403.html",
+		"errorPage_404": "webapp/error/404.html",
+		"errorPage_500": "webapp/error/500.html"
+	}]
+}

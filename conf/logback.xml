@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+		<Pattern>
+		    %d{yyyy-MM-dd HH:mm:ss} %-5level [%C:%L] | %msg%n
+		</Pattern>
+		</layout>
+	</appender>
+	
+	<property name="LOG_DIR" value="/logs" />
+	<property name="LOG_FILE_NAME" value="%d{yyyy-MM-dd}.log" />
+	<appender name="FILEOUT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE_NAME}</fileNamePattern>
+			<fileBasedFileNamingAndTriggerPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</fileBasedFileNamingAndTriggerPolicy>
+		</rollingPolicy>
+		<maxHistory>30</maxHistory>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%C:%L] | %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="*" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILEOUT"/>
+	</logger>
+    
+	<logger level="error">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILEOUT"/>
+	</logger>
+</configuration>
